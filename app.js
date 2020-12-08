@@ -9,10 +9,10 @@
     // An ether restores current fighters' MP.
 
 
-$numCards = 0; // Total number of cards per player.
-$playerOneCards = []; // Array of objects containing player one's cards.
-$playerTwoCards = []; // Array of objects containing player two's cards.
-$whichTurn = true; // Designates whose turn it is. True is player 1, false is 2.
+let $numCards = 0; // Total number of cards per player.
+let $playerOneCards = []; // Array of objects containing player one's cards.
+let $playerTwoCards = []; // Array of objects containing player two's cards.
+let $whichTurn = true; // Designates whose turn it is. True is player 1, false is 2.
 
 
 $(() => {
@@ -108,6 +108,8 @@ $(() => {
 
     }
 
+    // console.log($playerOneCards);
+
     // $playerOneActiveStats = $('<div>').addClass('active0Stats');
     // $playerOneActiveButtons = $('<div>').addClass('active0Buttons');
     // $playerTwoActiveStats = $('<div>').addClass('active1Stats');
@@ -138,17 +140,18 @@ $(() => {
     $('.actionButtonFrame button').remove(); // Delete any existing buttons.
 
     if ($whichTurn == true) { // Add action buttons for the given turn.
-      $attackButton = $('<button>').addClass('attack').addClass('player0');
-      $itemButton = $('<button>').addClass('item').addClass('player0');
-      $switchButton = $('<button>').addClass('switch').addClass('player0');
+      $attackButton = $('<button>').addClass('attack').addClass('player0').addClass('gradient-button').addClass('gradient-button-1');
+      $itemButton = $('<button>').addClass('item').addClass('player0').addClass('gradient-button').addClass('gradient-button-2');
+      $switchButton = $('<button>').addClass('switch').addClass('player0').addClass('gradient-button').addClass('gradient-button-3');
     } else {
-      $attackButton = $('<button>').addClass('attack').addClass('player1');
-      $itemButton = $('<button>').addClass('item').addClass('player1');
-      $switchButton = $('<button>').addClass('switch').addClass('player1');
+      $attackButton = $('<button>').addClass('attack').addClass('player1').addClass('gradient-button').addClass('gradient-button-1');
+      $itemButton = $('<button>').addClass('item').addClass('player1').addClass('gradient-button').addClass('gradient-button-2');
+      $switchButton = $('<button>').addClass('switch').addClass('player1').addClass('gradient-button').addClass('gradient-button-3');
     }
 
     $('.actionButtonFrame').append($attackButton);
     $('.actionButtonFrame').append($itemButton);
+
     $('.attack').text('Attack');
     $('.item').text('Item');
 
@@ -160,7 +163,7 @@ $(() => {
   }
 
 
-  const attachPlayerTurnArrow = ($whichTurn) => {
+  const attachPlayerTurnArrow = () => {
 
     $('.playerTurnArrow').remove(); // Remove current turn arrow.
 
@@ -169,10 +172,8 @@ $(() => {
     $('body').append($playerTurnArrow);
     if ($whichTurn == true) {
       $('.playerTurnArrow').text('>');
-      // $whichTurn = true;
     } else {
       $('.playerTurnArrow').text('<');
-      // $whichTurn = false;
     }
 
   }
@@ -180,14 +181,18 @@ $(() => {
 
   const startRound = () => {
 
-    // On click Attack, attack the other card depending on which player's turn it is.
-
+    $('.attack').click(attack); // On click Attack, attack the other card depending on which player's turn it is.
 
     // On Switch, replace the top card with the next highest card, and move the top card to the bottom.
     return;
 
   };
 
+  const attack = () => {
+
+    // Attacking player's attack is reduced from defending player's stamina.
+
+  }
 
   const removeCard = ($whichSide) => {
 
