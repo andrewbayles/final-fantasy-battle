@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <h1>Pokemon Card Battle</h1>
+
+    <div id="main">
+
+      <form id="numCardsForm">
+
+        <select id="numCards">
+          <option name="numCards4" value="4">4</option>
+          <option name="numCards3" value="3">3</option>
+          <option name="numCards2" value="2">2</option>
+          <option name="numCards1" value="1" selected="selected">1</option>
+        </select>
+
+        <input type="submit" value="Select Number of Cards per Player" />
+
+      </form>
+
+      <div id="playArea">
+
+        <div id="playerOneCards">
+          <div id="reserveArea1">
+          </div>
+        </div>
+
+        <div id="playerTwoCards">
+          <div id="reserveArea2">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>

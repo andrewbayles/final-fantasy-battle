@@ -1,0 +1,105 @@
+body {
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+}
+
+h1 {
+  font-size: 10em;
+  text-align: center;
+  color: #9c0030;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  line-height: 80%;
+}
+
+#numCardsForm {
+  margin-left: auto;
+  margin-right: auto;
+  width: 290px;
+}
+
+#numCardsForm select {
+  font-size: 1.4em;
+  padding: 8px;
+}
+
+#numCardsForm input {
+  padding: 14px;
+  border: 1px solid #ccc;
+}
+
+#playArea {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  display: flex;
+}
+
+#playerOneCards {
+  width: 45%;
+  margin-right: 10%;
+}
+
+#playerTwoCards {
+  width: 45%;
+}
+
+#reserveArea1, #reserveArea2 {
+  display: none;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#reserveArea1 > div, #reserveArea2 > div {
+  background-color: #ddd;
+  padding: 10px;
+}
+
+.cardId0, .cardId1 {
+
+}
+
+.cardId2, .cardId4, .cardId6 {
+  font-size: 0.8em;
+}
+
+.cardId3, .cardId5, .cardId7 {
+  font-size: 0.8em;
+}
+
+.active0, .active1 {
+  background-color: #eee;
+  display: block;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+}
+
+.actionButtonCont {
+  width: 100%;
+}
+
+.actionButtonFrame {
+  margin-left: auto;
+  margin-right: auto;
+  width: 312px;
+}
+
+.actionButtonFrame button {
+  width: 100px;
+  height: 40px;
+  margin-right: 4px;
+}
+
+.playerTurnArrow {
+  text-align: center;
+  font-size: 3.5em;
+  color: #888;
+}
