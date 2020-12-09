@@ -12,6 +12,8 @@
 let $numCards = 0; // Total number of cards per player.
 let $playerOneCards = []; // Array of objects containing player one's cards.
 let $playerTwoCards = []; // Array of objects containing player two's cards.
+let $activeCardOne = 0; // Tracks which card player one is currently using.
+let $activeCardTwo = 1; // Tracks which card player two is currently using.
 let $whichTurn = true; // Designates whose turn it is. True is player 1, false is 2.
 
 
@@ -64,6 +66,7 @@ $(() => {
     let $dataCards = $dataRandom.slice(0, $numCards);
 
     $('h1').css('color', '#ffd6e3'); // Lighten title color.
+    $('h1').css('text-shadow', 'none'); // Remove title shadow.
 
     for (let i = 0; i < $dataCards.length; i++) {
 
@@ -108,18 +111,6 @@ $(() => {
 
     }
 
-    // console.log($playerOneCards);
-
-    // $playerOneActiveStats = $('<div>').addClass('active0Stats');
-    // $playerOneActiveButtons = $('<div>').addClass('active0Buttons');
-    // $playerTwoActiveStats = $('<div>').addClass('active1Stats');
-    // $playerTwoActiveButtons = $('<div>').addClass('active1Buttons');
-    //
-    // $('#playerOneCards').append($playerOneActiveStats);
-    // $('#playerOneCards').append($playerOneActiveButtons);
-    // $('#playerTwoCards').append($playerTwoActiveStats);
-    // $('#playerTwoCards').append($playerTwoActiveButtons);
-
     // Designate which player's turn it is via a random arrow selection.
     $whichTurn = Math.random() < 0.5;
     attachPlayerTurnArrow($whichTurn);
@@ -135,7 +126,7 @@ $(() => {
   };
 
 
-  const addActionButtons = ($whichTurn) => {
+  const addActionButtons = () => {
 
     $('.actionButtonFrame button').remove(); // Delete any existing buttons.
 
@@ -179,20 +170,30 @@ $(() => {
   }
 
 
+  // Begin a new round.
   const startRound = () => {
 
-    $('.attack').click(attack); // On click Attack, attack the other card depending on which player's turn it is.
+    // console.log($playerOneCards);
+    // console.log($playerTwoCards);
 
-    // On Switch, replace the top card with the next highest card, and move the top card to the bottom.
-    return;
+    $('.attack').click(attack());
 
-  };
-
-  const attack = () => {
-
-    // Attacking player's attack is reduced from defending player's stamina.
+    $whichTurn = !$whichTurn; // Switch whose turn it is.
 
   }
+
+
+  // Attacking player's attack is reduced from defending player's stamina.
+  const attack = () => {
+
+    if ($whichTurn == true) {
+      $playerTwoCards[$activeCardTwo].base_stamina -= $playerOneCards[$activeCardOne].base_attack;
+    } else {
+      $playerOneCards[$activeCardOne].base_stamina -= $playerTwoCards[$activeCardTwo].base_attack;
+    }
+
+  }
+
 
   const removeCard = ($whichSide) => {
 
